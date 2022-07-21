@@ -1,0 +1,6 @@
+{
+  "extends": "@vtrbo",
+  "rules": {
+    "no-console": "off"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "@vtrbo/cli",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.5.2",
+  "description": "Victor Bo's tool to start a project.",
+  "author": "Victor Bo<vtrbo.qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/vtrbo/cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtrbo/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vtrbo/cli/issues"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "vtr": "bin/vtr.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "prepublishOnly": "nr build",
+    "dev": "esno src/index.ts",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "release": "bumpp && nr publish --access=public",
+    "lint": "eslint .",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "@types/prompts": "^2.0.14",
+    "@vtrbo/eslint-config": "^0.0.5",
+    "@vtrbo/ni": "^0.0.2",
+    "bumpp": "^8.2.1",
+    "download-git-repo": "^3.0.2",
+    "eslint": "^8.20.0",
+    "esno": "^0.16.3",
+    "execa": "^6.1.0",
+    "fast-glob": "^3.2.11",
+    "ora": "^6.1.2",
+    "prompts": "^2.4.2",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.7.4",
+    "vitest": "^0.18.1"
+  }
+}
