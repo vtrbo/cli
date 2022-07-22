@@ -32,7 +32,6 @@ export const REMINDERS: PromptObject[] = [
   {
     type: 'text',
     name: 'projectName',
-    message: 'Keyup a project name',
-    initial: 'Why should I?',
+    message: 'Keyup a filename',
   },
 ]

@@ -3,16 +3,21 @@ import prompts from 'prompts'
 import { REMINDERS, TEMPLATES } from './constant'
 import { downloadTemplate } from './download'
 import type { InteractOptions } from './types'
+import { throwError } from './utils'
 
 /**
  * @description 交互式下载
  */
-export async function interactionPrompts(): Promise<void> {
-  const branch = await prompts(REMINDERS[0])
-  const { templateName } = branch
-  templateName === 'Custom'
-    ? downloadCustom(templateName)
-    : downloadPreset(templateName)
+export function interactionPrompts() {
+  prompts(REMINDERS[0]).then((branch) => {
+    if (!Object.keys(branch).length)
+      throwError('操作中断')
+
+    const { templateName } = branch
+    templateName === 'Custom'
+      ? downloadCustom(templateName)
+      : downloadPreset(templateName)
+  })
 }
 
 /**
@@ -27,29 +32,23 @@ async function downloadCustom(templateName: string) {
  * @description 预设下载
  * @param templateName string 模板名称
  */
-async function downloadPreset(templateName: string) {
+function downloadPreset(templateName: string) {
   console.log('download template', templateName)
-
   const templatePath = TEMPLATES.find(f => f.value === templateName)?.path || ''
-  const answer = await prompts(REMINDERS.slice(1))
-  const process = ora('start download template').start()
+  prompts(REMINDERS.slice(1)).then(async (answer) => {
+    if (!Object.keys(answer).length)
+      throwError('操作中断')
 
-  try {
-    let result = true
-    const { projectName } = answer
-    const interactOptions: InteractOptions = {
-      projectName,
+    const oraInstance = ora('start download template').start()
+    let downloadResult = true
+    downloadResult = await downloadTemplate({
+      ...answer,
       templateName,
       templatePath,
-    }
-    result = await downloadTemplate(interactOptions)
-    result
-      ? process.succeed('download template success')
-      : process.fail('download fail')
-  }
-  catch (error) {
-    console.log('[@vtrbo/cli] => download template error')
-    console.log(error)
-    process.fail('download template fail')
-  }
+    } as InteractOptions)
+
+    downloadResult
+      ? oraInstance.succeed('download template success')
+      : oraInstance.fail('download fail')
+  })
 }

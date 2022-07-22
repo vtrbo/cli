@@ -19,6 +19,7 @@ export async function runner(parse: Runner): Promise<void> {
     )
   }
   catch (error) {
+    console.log('error', error)
     process.exit(1)
   }
 }
