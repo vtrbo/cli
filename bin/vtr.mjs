@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 'use strict'
-import '../dist/vtr.mjs'
+import '../dist/index.mjs'

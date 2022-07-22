@@ -1,6 +1,4 @@
-export * from './parse'
-export * from './runner'
-export * from './constant'
-export * from './types'
-export * from './interact'
-export * from './utils'
+import { runner } from './runner'
+import { parse } from './parse'
+
+runner(parse)

@@ -1,26 +1,24 @@
 import { execaCommand } from 'execa'
-import { interactEntry } from './interact'
-import type { TRun } from './types'
+import type { Runner } from './types'
+import { interactionPrompts } from './interaction'
 
-export async function runCli(fn: TRun, options = {}) {
+/**
+ * @description 启动器
+ * @param parse 解析函数
+ */
+export async function runner(parse: Runner): Promise<void> {
   const args = process.argv.slice(2).filter(Boolean)
   try {
-    await run(fn, args, options)
+    const cwd = process.cwd()
+    const command = await parse(args, cwd)
+    console.log('command', command)
+    command && await (
+      command === 'interaction'
+        ? interactionPrompts()
+        : execaCommand(command, { stdio: 'inherit', encoding: 'utf-8', cwd })
+    )
   }
   catch (error) {
     process.exit(1)
   }
-}
-
-export async function run(fn: TRun, args: string[], _options: { [key: string]: string } = {}) {
-  const cwd = process.cwd()
-  const command = await fn(args, {
-    cwd,
-  })
-  console.log('command', command)
-  command && await (
-    command === 'cli'
-      ? interactEntry()
-      : execaCommand(command, { stdio: 'inherit', encoding: 'utf-8', cwd })
-  )
 }

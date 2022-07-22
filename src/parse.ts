@@ -1,8 +1,11 @@
 import { version } from '../package.json'
-import type { TRun } from './types'
+import type { Runner } from './types'
 
-export const parseVtr = <TRun>((args, ctx) => {
-  console.log('args, ctx', args, ctx)
+/**
+ * @description 解析函数
+ */
+export const parse = <Runner>((args, cwd) => {
+  console.log('args, cwd', args, cwd)
 
   if (args.length === 1 && ['-h', '--help'].includes(args[0])) {
     console.log(`
@@ -17,9 +20,9 @@ export const parseVtr = <TRun>((args, ctx) => {
     process.exit(0)
   }
 
-  if (args.length === 1 && ['-i', '--init', 'init', 'start'].includes(args[0])) {
-    console.log('命令行交互方式', '命令行交互方式')
-    return 'cli'
+  if (args.length === 1 && ['-i', '--init', 'init', 'create', 'start'].includes(args[0])) {
+    console.log('问答式命令行')
+    return 'interaction'
   }
 
   return 'ni'

@@ -1,17 +1,14 @@
 import type { Choice, PromptObject } from 'prompts'
-
-export interface ITemplate extends Choice {
-  path?: string
-}
+import type { Template } from './types'
 
 /**
- * 模板仓库列表
+ * @description 预设模板
  */
-export const templates: ITemplate[] = [
+export const TEMPLATES: Template[] = [
   {
     title: 'VS Code',
     value: 'VS Code',
-    path: 'git@github.com:vtrbo/cli.git',
+    path: 'github:vtrbo/cli#main',
     description: 'Starter template for VS Code Extension',
   },
   {
@@ -23,19 +20,19 @@ export const templates: ITemplate[] = [
 ]
 
 /**
- * 交互式指令集
+ * @description 交互式指令
  */
-export const reminders: PromptObject[] = [
+export const REMINDERS: PromptObject[] = [
   {
     type: 'select',
     name: 'templateName',
     message: 'Pick a template',
-    choices: templates as Choice[],
+    choices: TEMPLATES as Choice[],
   },
   {
     type: 'text',
     name: 'projectName',
     message: 'Keyup a project name',
+    initial: 'Why should I?',
   },
 ]
-
