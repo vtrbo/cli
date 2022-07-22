@@ -1,11 +1,10 @@
 import path from 'path'
-import type { Download, InteractOptions } from './types'
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const download: Download = require('download-git-repo')
+import type { DownloadError } from 'download-git-repo'
+import download from 'download-git-repo'
+import type { InteractOptions } from './types'
 
 /**
- * 下载预设模板
+ * @description 下载预设模板
  * @param options 交互式指令表单
  * @returns 成功/失败
  */
@@ -19,7 +18,7 @@ export function downloadTemplate(options: InteractOptions): Promise<boolean> {
       templatePath,
       projectPath,
       { clone: true },
-      (error: Error | undefined) => {
+      (error: DownloadError) => {
         if (error) {
           console.log('download template error', error)
           resolve(false)
