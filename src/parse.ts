@@ -13,7 +13,7 @@ export const parse = <Runner>((args: string[], cwd: string) => {
     return singleArgs(args)
 
   if (['-d', '--download'].includes(args[0]))
-    downloadRepository(args)
+    return downloadRepository(args)
 
   if (args.length >= 2 && args[0].replace(/\\/g, '/').includes('/'))
     return `vtr -d github ${args[0]} ${args[1]} ${args[2]}`

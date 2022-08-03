@@ -27,9 +27,6 @@ export function downloadTemplate(options: InteractOptions): Promise<boolean> {
     if (fs.existsSync(projectPath))
       throwError(`已存在${projectName}，请删除后重试`)
 
-    console.log('templatePath', templatePath)
-    console.log('projectPath', projectPath)
-
     download(
       templatePath,
       projectPath,
@@ -53,14 +50,11 @@ export function downloadCommand(args: string[]): Promise<boolean> {
   return new Promise((resolve) => {
     const [type, repository, projectName, branch] = args
     const cwd = process.cwd()
-    const templatePath = `${type}:${repository}${branch !== 'undefined' ? `#${branch}` : ''}`
+    const templatePath = `${type}:${repository}${branch !== 'undefined' ? `#${branch}` : '#main'}`
     const projectPath = path.resolve(cwd, projectName)
 
     if (fs.existsSync(projectPath))
       throwError(`已存在${projectName}，请删除后重试`)
-
-    console.log('templatePath', templatePath)
-    console.log('projectPath', projectPath)
 
     download(
       templatePath,
