@@ -1,16 +1,27 @@
+import ora from 'ora'
 import { version } from '../package.json'
+import { downloadCommand } from './download'
 import type { Runner } from './types'
 
 /**
  * @description 解析函数
  */
-export const parse = <Runner>((args, cwd) => {
+export const parse = <Runner>((args: string[], cwd: string) => {
   console.log('args, cwd', args, cwd)
 
   if (args.length === 1)
     return singleArgs(args)
 
-  return 'ni'
+  if (['-d', '--download'].includes(args[0]))
+    downloadRepository(args)
+
+  if (args.length >= 2 && args[0].replace(/\\/g, '/').includes('/'))
+    return `vtr -d github ${args[0]} ${args[1]} ${args[2]}`
+
+  if (args.length === 3)
+    return 'ni'
+
+  return 'vtr -i'
 })
 
 /**
@@ -55,4 +66,21 @@ function commandVersion() {
  */
 function commandInteraction(): string {
   return 'interaction'
+}
+
+/**
+ * @description 下载仓库
+ * @param args 下载参数
+ */
+async function downloadRepository(args: string[]) {
+  console.log('args', args)
+  const oraInstance = ora('download repository ing...\n').start()
+  let downloadResult = true
+  downloadResult = await downloadCommand(args.slice(1))
+
+  downloadResult
+    ? oraInstance.succeed('download repository success')
+    : oraInstance.fail('download repository fail')
+
+  process.exit(0)
 }

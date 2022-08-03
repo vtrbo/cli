@@ -34,7 +34,7 @@
     "dev": "esno src/index.ts",
     "build": "unbuild",
     "stub": "unbuild --stub",
-    "release": "bumpp && nr publish --access=public",
+    "release": "bumpp && npm publish --access=public",
     "lint": "eslint .",
     "test": "vitest"
   },
@@ -43,6 +43,7 @@
     "@types/prompts": "^2.0.14",
     "@vtrbo/eslint-config": "^0.0.5",
     "@vtrbo/ni": "^0.0.2",
+    "@vtrbo/utils": "0.0.0-alpha.2",
     "bumpp": "^8.2.1",
     "download-git-repo": "^3.0.2",
     "eslint": "^8.20.0",

@@ -5,6 +5,7 @@ specifiers:
   '@types/prompts': ^2.0.14
   '@vtrbo/eslint-config': ^0.0.5
   '@vtrbo/ni': ^0.0.2
+  '@vtrbo/utils': 0.0.0-alpha.2
   bumpp: ^8.2.1
   download-git-repo: ^3.0.2
   eslint: ^8.20.0
@@ -22,6 +23,7 @@ devDependencies:
   '@types/prompts': 2.0.14
   '@vtrbo/eslint-config': 0.0.5_he2ccbldppg44uulnyq4rwocfa
   '@vtrbo/ni': 0.0.2
+  '@vtrbo/utils': 0.0.0-alpha.2
   bumpp: 8.2.1
   download-git-repo: 3.0.2
   eslint: 8.20.0
@@ -741,6 +743,10 @@ packages:
   /@vtrbo/ni/0.0.2:
     resolution: {integrity: sha512-5g1LPLBjbWquZ+4TqxZwhLng8cxkaF11hJJKaxaqA9X8KmFFbheZOn2AVMVKbyZOrv77pCjdq9eRJzHGhHV4Hg==}
     hasBin: true
+    dev: true
+
+  /@vtrbo/utils/0.0.0-alpha.2:
+    resolution: {integrity: sha512-tphWe5KjJceeJIGP3awf0bNNzHHpv+sO0PB0ZrpmMAYYMBKIA8ixE1iNur5PV7k4ficMyQ2eWUworkS5vhu8uQ==}
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.7.1:

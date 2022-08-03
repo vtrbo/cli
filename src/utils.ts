@@ -4,5 +4,5 @@
  */
 export function throwError(message: string): void {
   console.log('message', message)
-  process.exit(1)
+  process.exit(0)
 }

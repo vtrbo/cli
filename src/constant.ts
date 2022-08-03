@@ -6,16 +6,22 @@ import type { Template } from './types'
  */
 export const TEMPLATES: Template[] = [
   {
-    title: 'VS Code',
-    value: 'VS Code',
-    path: 'github:vtrbo/cli#main',
-    description: 'Starter template for VS Code Extension',
+    title: 'VS Code Extension',
+    value: 'VS Code Extension',
+    path: 'github:vtrbo/starter-vscode#main',
+    description: 'Victor Bo\'s VS Code Extension Template.',
   },
   {
-    title: 'TS Lib',
-    value: 'TS Lib',
-    path: 'https://github.com/vtrbo/ts-lib',
-    description: 'Starter template for TypeScript library',
+    title: 'TypeScript Library',
+    value: 'TypeScript Library',
+    path: 'github:vtrbo/starter-library#main',
+    description: 'Victor Bo\'s TypeScript Library Template.',
+  },
+  {
+    title: 'Unplugin',
+    value: 'Unplugin',
+    path: 'github:vtrbo/starter-unplugin#main',
+    description: 'Victor Bo\'s Unplugin Template.',
   },
 ]
 
@@ -26,12 +32,17 @@ export const REMINDERS: PromptObject[] = [
   {
     type: 'select',
     name: 'templateName',
-    message: 'Pick a template',
+    message: 'Pick template',
     choices: TEMPLATES as Choice[],
   },
   {
     type: 'text',
+    name: 'projectBranch',
+    message: 'Keyup branch',
+  },
+  {
+    type: 'text',
     name: 'projectName',
-    message: 'Keyup a filename',
+    message: 'Keyup filename',
   },
 ]

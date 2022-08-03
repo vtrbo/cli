@@ -8,6 +8,7 @@ export interface Template extends Choice {
 
 export interface InteractOptions {
   projectName: string
+  projectBranch: string
   templateName: string
   templatePath: string
 }

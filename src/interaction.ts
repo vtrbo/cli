@@ -33,13 +33,12 @@ async function downloadCustom(templateName: string) {
  * @param templateName string 模板名称
  */
 function downloadPreset(templateName: string) {
-  console.log('download template', templateName)
   const templatePath = TEMPLATES.find(f => f.value === templateName)?.path || ''
   prompts(REMINDERS.slice(1)).then(async (answer) => {
     if (!Object.keys(answer).length)
       throwError('操作中断')
 
-    const oraInstance = ora('start download template').start()
+    const oraInstance = ora('download template ing...\n').start()
     let downloadResult = true
     downloadResult = await downloadTemplate({
       ...answer,
@@ -49,6 +48,6 @@ function downloadPreset(templateName: string) {
 
     downloadResult
       ? oraInstance.succeed('download template success')
-      : oraInstance.fail('download fail')
+      : oraInstance.fail('download template fail')
   })
 }
