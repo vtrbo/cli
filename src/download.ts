@@ -51,7 +51,7 @@ export function downloadCommand(args: string[]): Promise<boolean> {
     const [type, repository, projectName, branch] = args
     const cwd = process.cwd()
     const templatePath = `${type}:${repository}${branch !== 'undefined' ? `#${branch}` : '#main'}`
-    const projectPath = path.resolve(cwd, projectName)
+    const projectPath = path.resolve(cwd, projectName !== 'undefined' ? projectName : repository.split('/')[1])
 
     if (fs.existsSync(projectPath))
       throwError(`已存在${projectName}，请删除后重试`)

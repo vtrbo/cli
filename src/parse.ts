@@ -12,14 +12,14 @@ export const parse = <Runner>((args: string[], cwd: string) => {
   if (args.length === 1)
     return singleArgs(args)
 
-  if (['-d', '--download'].includes(args[0]))
+  if (['-d', '--download'].includes(args[0]) && (args[1].replace(/\\/g, '/').includes('/') || ['github'].includes(args[1])))
     return downloadRepository(args)
 
   if (args.length >= 2 && args[0].replace(/\\/g, '/').includes('/'))
     return `vtr -d github ${args[0]} ${args[1]} ${args[2]}`
 
-  if (args.length === 3)
-    return 'ni'
+  if (args.length >= 2 && ['github'].includes(args[0]) && args[1].replace(/\\/g, '/').includes('/'))
+    return `vtr -d ${args[0]} ${args[1]} ${args[2]} ${args[3]}`
 
   return 'vtr -i'
 })
