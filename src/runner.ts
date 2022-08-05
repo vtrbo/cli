@@ -1,6 +1,7 @@
 import { execaCommand } from 'execa'
 import type { Runner } from './types'
 import { interactionPrompts } from './interaction'
+import { clog } from './utils'
 
 /**
  * @description 启动器
@@ -11,7 +12,6 @@ export async function runner(parse: Runner): Promise<void> {
   try {
     const cwd = process.cwd()
     const command = await parse(args, cwd)
-    console.log('command', command)
     command && await (
       command === 'interaction'
         ? interactionPrompts()
@@ -19,7 +19,8 @@ export async function runner(parse: Runner): Promise<void> {
     )
   }
   catch (error) {
-    console.log('error', error)
+    console.log(clog('未知错误', 'red'))
+    error && console.log(error)
     process.exit(1)
   }
 }

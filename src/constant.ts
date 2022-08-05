@@ -23,18 +23,27 @@ export const TEMPLATES: Template[] = [
     path: 'github:vtrbo/starter-unplugin#main',
     description: 'Victor Bo\'s Unplugin Template.',
   },
+  {
+    title: 'Custom',
+    value: 'Custom',
+    path: '',
+    description: 'Custom Repository Download',
+  },
 ]
 
 /**
  * @description 交互式指令
  */
 export const REMINDERS: PromptObject[] = [
+  // 首次问话
   {
     type: 'select',
     name: 'templateName',
     message: 'Pick template',
     choices: TEMPLATES as Choice[],
   },
+
+  // 模板预设问话
   {
     type: 'text',
     name: 'projectBranch',
@@ -43,6 +52,33 @@ export const REMINDERS: PromptObject[] = [
   {
     type: 'text',
     name: 'projectName',
+    message: 'Keyup filename',
+  },
+
+  // 自定义问话
+  {
+    type: 'text',
+    name: 'customOrigin',
+    message: 'Keyup origin',
+  },
+  {
+    type: 'text',
+    name: 'customOwner',
+    message: 'Keyup owner',
+  },
+  {
+    type: 'text',
+    name: 'customName',
+    message: 'Keyup repo name',
+  },
+  {
+    type: 'text',
+    name: 'customBranch',
+    message: 'Keyup repo branch',
+  },
+  {
+    type: 'text',
+    name: 'customFilename',
     message: 'Keyup filename',
   },
 ]

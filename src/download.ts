@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import type { DownloadError } from 'download-git-repo'
-import download from 'download-git-repo'
+import { loadRepo } from 'load-repo'
 import type { InteractOptions } from './types'
 import { throwError } from './utils'
 
@@ -27,15 +26,13 @@ export function downloadTemplate(options: InteractOptions): Promise<boolean> {
     if (fs.existsSync(projectPath))
       throwError(`已存在${projectName}，请删除后重试`)
 
-    download(
+    loadRepo(
       templatePath,
       projectPath,
-      { clone: true },
-      (error: DownloadError) => {
-        if (error) {
-          console.log('download template error\n', error)
+      { clone: false },
+      (error?: Error) => {
+        if (error)
           resolve(false)
-        }
         resolve(true)
       })
   })
@@ -50,21 +47,19 @@ export function downloadCommand(args: string[]): Promise<boolean> {
   return new Promise((resolve) => {
     const [type, repository, projectName, branch] = args
     const cwd = process.cwd()
-    const templatePath = `${type}:${repository}${branch !== 'undefined' ? `#${branch}` : '#main'}`
+    const templatePath = `${type}:${repository}${branch !== 'undefined' ? `#${branch}` : ''}`
     const projectPath = path.resolve(cwd, projectName !== 'undefined' ? projectName : repository.split('/')[1])
 
     if (fs.existsSync(projectPath))
       throwError(`已存在${projectName}，请删除后重试`)
 
-    download(
+    loadRepo(
       templatePath,
       projectPath,
-      { clone: true },
-      (error: DownloadError) => {
-        if (error) {
-          console.log('download repository error\n', error)
+      { clone: false },
+      (error?: Error) => {
+        if (error)
           resolve(false)
-        }
         resolve(true)
       })
   })

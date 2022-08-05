@@ -1,9 +1,9 @@
 import ora from 'ora'
 import prompts from 'prompts'
 import { REMINDERS, TEMPLATES } from './constant'
-import { downloadTemplate } from './download'
+import { downloadCommand, downloadTemplate } from './download'
 import type { InteractOptions } from './types'
-import { throwError } from './utils'
+import { clog, throwError } from './utils'
 
 /**
  * @description 交互式下载
@@ -15,17 +15,33 @@ export function interactionPrompts() {
 
     const { templateName } = branch
     templateName === 'Custom'
-      ? downloadCustom(templateName)
+      ? downloadCustom()
       : downloadPreset(templateName)
   })
 }
 
 /**
  * @description 自定义下载
- * @param templateName string 模板名称 在这里其实是一个自定义标识
  */
-async function downloadCustom(templateName: string) {
-  console.log('download custom', templateName)
+async function downloadCustom() {
+  prompts(REMINDERS.slice(3)).then(async (answer) => {
+    if (Object.keys(answer).length !== 5)
+      throwError('操作中断')
+    console.log('answer', answer)
+    const oraInstance = ora(clog('download custom repository ing...\n', 'blue')).start()
+    let downloadResult = true
+    const { customOrigin, customOwner, customName, customFilename, customBranch } = answer
+    downloadResult = await downloadCommand([
+      customOrigin || 'github',
+      `${customOwner}/${customName}`,
+      customFilename || 'undefined',
+      customBranch || 'undefined',
+    ])
+
+    downloadResult
+      ? oraInstance.succeed(clog('download custom repository success', 'green'))
+      : oraInstance.fail(clog('download custom repository fail', 'red'))
+  })
 }
 
 /**
@@ -34,11 +50,11 @@ async function downloadCustom(templateName: string) {
  */
 function downloadPreset(templateName: string) {
   const templatePath = TEMPLATES.find(f => f.value === templateName)?.path || ''
-  prompts(REMINDERS.slice(1)).then(async (answer) => {
-    if (!Object.keys(answer).length)
+  prompts(REMINDERS.slice(1, 3)).then(async (answer) => {
+    if (Object.keys(answer).length !== 2)
       throwError('操作中断')
 
-    const oraInstance = ora('download template ing...\n').start()
+    const oraInstance = ora(clog('download template ing...\n', 'blue')).start()
     let downloadResult = true
     downloadResult = await downloadTemplate({
       ...answer,
@@ -47,7 +63,7 @@ function downloadPreset(templateName: string) {
     } as InteractOptions)
 
     downloadResult
-      ? oraInstance.succeed('download template success')
-      : oraInstance.fail('download template fail')
+      ? oraInstance.succeed(clog('download template success', 'green'))
+      : oraInstance.fail(clog('download template fail', 'red'))
   })
 }
