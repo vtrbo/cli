@@ -37,5 +37,11 @@ jobs:
       - name: Lint
         run: nr lint
 
+      - name: TypeCheck
+        run: nr typecheck
+
+      - name: Build
+        run: nr build
+
       - name: Test
         run: nr test

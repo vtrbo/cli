@@ -27,7 +27,7 @@ async function downloadCustom() {
   prompts(REMINDERS.slice(3)).then(async (answer) => {
     if (Object.keys(answer).length !== 5)
       throwError('操作中断')
-    console.log('answer', answer)
+
     const oraInstance = ora(clog('download custom repository ing...\n', 'blue')).start()
     let downloadResult = true
     const { customOrigin, customOwner, customName, customFilename, customBranch } = answer
