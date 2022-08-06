@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "packageManager": "pnpm@7.8.0",
   "description": "Victor Bo's tool to start a project.",
-  "author": "Victor Bo<vtrbo.qq.com>",
+  "author": {
+    "name": "Victor Bo",
+    "email": "hi@vtrbo.cn"
+  },
   "license": "MIT",
   "homepage": "https://github.com/vtrbo/cli#readme",
   "repository": {
@@ -37,6 +40,7 @@
     "stub": "unbuild --stub",
     "release": "bumpp && npm publish --access=public",
     "test": "vitest",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
