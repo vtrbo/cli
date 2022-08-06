@@ -1,5 +1,6 @@
 {
   "name": "@vtrbo/cli",
+  "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@7.8.0",
   "description": "Victor Bo's tool to start a project.",
@@ -27,7 +28,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "vtr": "bin/vtr.mjs"
+    "vtr": "bin/index.mjs"
   },
   "files": [
     "dist",
