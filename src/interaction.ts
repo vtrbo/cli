@@ -1,4 +1,4 @@
-import ora from 'ora'
+// import ora from 'ora'
 import prompts from 'prompts'
 import { REMINDERS, TEMPLATES } from './constant'
 import { downloadCommand, downloadTemplate } from './download'
@@ -28,7 +28,9 @@ async function downloadCustom() {
     if (Object.keys(answer).length !== 5)
       throwError('操作中断')
 
-    const oraInstance = ora(clog('download custom repository ing...\n', 'blue')).start()
+    // const oraInstance = ora(clog('download custom repository ing...\n', 'blue')).start()
+    console.log(clog('download custom repository ing...', 'blue'))
+
     let downloadResult = true
     const { customOrigin, customOwner, customName, customFilename, customBranch } = answer
     downloadResult = await downloadCommand([
@@ -38,9 +40,13 @@ async function downloadCustom() {
       customBranch || 'undefined',
     ])
 
+    // downloadResult
+    //   ? oraInstance.succeed(clog('download custom repository success', 'green'))
+    //   : oraInstance.fail(clog('download custom repository fail', 'red'))
+
     downloadResult
-      ? oraInstance.succeed(clog('download custom repository success', 'green'))
-      : oraInstance.fail(clog('download custom repository fail', 'red'))
+      ? console.log(clog('download custom repository success', 'green'))
+      : console.log(clog('download custom repository fail', 'red'))
   })
 }
 
@@ -54,7 +60,9 @@ function downloadPreset(templateName: string) {
     if (Object.keys(answer).length !== 2)
       throwError('操作中断')
 
-    const oraInstance = ora(clog('download template ing...\n', 'blue')).start()
+    // const oraInstance = ora(clog('download template ing...\n', 'blue')).start()
+    console.log(clog('download template ing...', 'blue'))
+
     let downloadResult = true
     downloadResult = await downloadTemplate({
       ...answer,
@@ -62,8 +70,12 @@ function downloadPreset(templateName: string) {
       templatePath,
     } as InteractOptions)
 
+    // downloadResult
+    //   ? oraInstance.succeed(clog('download template success', 'green'))
+    //   : oraInstance.fail(clog('download template fail', 'red'))
+
     downloadResult
-      ? oraInstance.succeed(clog('download template success', 'green'))
-      : oraInstance.fail(clog('download template fail', 'red'))
+      ? console.log(clog('download template success', 'green'))
+      : console.log(clog('download template fail', 'red'))
   })
 }

@@ -1,4 +1,4 @@
-import ora from 'ora'
+// import ora from 'ora'
 import { version } from '../package.json'
 import { downloadCommand } from './download'
 import type { Runner } from './types'
@@ -99,13 +99,19 @@ function commandInteraction(): string {
  * @param args 下载参数
  */
 async function downloadRepository(args: string[]) {
-  const oraInstance = ora(clog('download repository ing...\n', 'blue')).start()
+  // const oraInstance = ora(clog('download repository ing...\n', 'blue')).start()
+  console.log(clog('download repository ing...', 'blue'))
+
   let downloadResult = true
   downloadResult = await downloadCommand(args.slice(1))
 
+  // downloadResult
+  //   ? oraInstance.succeed(clog('download repository success', 'green'))
+  //   : oraInstance.fail(clog('download repository fail', 'red'))
+
   downloadResult
-    ? oraInstance.succeed(clog('download repository success', 'green'))
-    : oraInstance.fail(clog('download repository fail', 'red'))
+    ? console.log(clog('download repository success', 'green'))
+    : console.log(clog('download repository fail', 'red'))
 
   process.exit(0)
 }
