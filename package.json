@@ -2,7 +2,7 @@
   "name": "@vtrbo/cli",
   "type": "module",
   "version": "0.0.2",
-  "packageManager": "pnpm@7.8.0",
+  "packageManager": "pnpm@7.9.0",
   "description": "Victor Bo's tool to start a project.",
   "author": {
     "name": "Victor Bo",
@@ -45,11 +45,11 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "^18.6.4",
+    "@types/node": "^18.7.1",
     "@types/prompts": "^2.0.14",
     "@vtrbo/eslint-config": "^0.0.6",
     "@vtrbo/ni": "^0.0.3",
-    "@vtrbo/utils": "0.0.11",
+    "@vtrbo/utils": "0.0.13",
     "bumpp": "^8.2.1",
     "chalk": "^5.0.1",
     "eslint": "^8.21.0",
@@ -58,10 +58,10 @@
     "fast-glob": "^3.2.11",
     "load-repo": "^0.0.1",
     "ora": "^6.1.2",
-    "pnpm": "^7.8.0",
+    "pnpm": "^7.9.0",
     "prompts": "^2.4.2",
     "typescript": "^4.7.4",
-    "unbuild": "^0.7.6",
-    "vitest": "^0.21.0"
+    "unbuild": "^0.8.7",
+    "vitest": "^0.21.1"
   }
 }
