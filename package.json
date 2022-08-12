@@ -19,10 +19,10 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/main.cjs"
+      "require": "./dist/index.cjs"
     }
   },
-  "main": "dist/main.cjs",
+  "main": "dist/index.cjs",
   "bin": {
     "vtr": "bin/vtr.mjs"
   },
@@ -32,8 +32,8 @@
   ],
   "scripts": {
     "prepublishOnly": "nr build",
-    "dev": "temir src/main.ts",
-    "build": "temir build src/main.ts",
+    "dev": "rimraf dist && temir src/index.ts",
+    "build": "rimraf dist && temir build src/index.ts",
     "start": "pnpm run build && node dist/main.js",
     "release": "bumpp && npm publish --access=public",
     "test": "vitest",
@@ -47,10 +47,14 @@
     "@temir/select-input": "^0.0.9",
     "@temir/spinner": "^0.0.9",
     "@temir/tab": "^0.0.9",
+    "@types/node": "^18.7.2",
     "@vitejs/plugin-vue": "^3.0.2",
     "@vtrbo/eslint-config": "^0.0.6",
+    "@vtrbo/utils": "^0.0.13",
     "@vue/runtime-core": "^3.2.37",
+    "commander": "^9.4.0",
     "eslint": "^8.21.0",
+    "rimraf": "^3.0.2",
     "vite": "^3.0.6",
     "vite-node": "^0.21.1",
     "vue": "^3.2.37"

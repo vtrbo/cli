@@ -1,15 +1,9 @@
 <template>
-  <TBox
-    :margin="5"
-    :width="30"
-    :height="5"
-    border-style="double"
-    justify-content="center"
-    align-items="center"
-  >
+  <TBox>
     <TText color="#42b883">
-      Hi TEMIR !! {{ count }}
+      Hi TEMIR !!
     </TText>
+    <input type="text">
   </TBox>
 </template>
 

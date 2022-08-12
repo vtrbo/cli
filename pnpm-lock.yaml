@@ -10,10 +10,14 @@ importers:
       '@temir/select-input': ^0.0.9
       '@temir/spinner': ^0.0.9
       '@temir/tab': ^0.0.9
+      '@types/node': ^18.7.2
       '@vitejs/plugin-vue': ^3.0.2
       '@vtrbo/eslint-config': ^0.0.6
+      '@vtrbo/utils': ^0.0.13
       '@vue/runtime-core': ^3.2.37
+      commander: ^9.4.0
       eslint: ^8.21.0
+      rimraf: ^3.0.2
       vite: ^3.0.6
       vite-node: ^0.21.1
       vue: ^3.2.37
@@ -24,10 +28,14 @@ importers:
       '@temir/select-input': 0.0.9
       '@temir/spinner': 0.0.9
       '@temir/tab': 0.0.9
+      '@types/node': 18.7.2
       '@vitejs/plugin-vue': 3.0.2_vite@3.0.6+vue@3.2.37
       '@vtrbo/eslint-config': 0.0.6_qugx7qdu5zevzvxaiqyxfiwquq
+      '@vtrbo/utils': 0.0.13
       '@vue/runtime-core': 3.2.37
+      commander: 9.4.0
       eslint: 8.21.0
+      rimraf: 3.0.2
       vite: 3.0.6
       vite-node: 0.21.1
       vue: 3.2.37
@@ -550,6 +558,10 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
+  /@types/node/18.7.2:
+    resolution: {integrity: sha512-ce7MIiaYWCFv6A83oEultwhBXb22fxwNOQf5DIxWA4WXvDQ7K+L0fbWl/YOfCzlR5B/uFkSnVBhPcOfOECcWvA==}
+    dev: true
+
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
@@ -812,6 +824,10 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
       - typescript
+    dev: true
+
+  /@vtrbo/utils/0.0.13:
+    resolution: {integrity: sha512-xPfzYOcC9e8/H7Ke/IkXCZIJyQ2fZNLjVLXbJ2LvGrofNnQBKVjtPynDUKWYUhEYDv3kIjTtQu1G4S7jplWH8A==}
     dev: true
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
@@ -1223,6 +1239,11 @@ packages:
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+    dev: true
+
+  /commander/9.4.0:
+    resolution: {integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==}
+    engines: {node: ^12.20.0 || >=14}
     dev: true
 
   /concat-map/0.0.1:
