@@ -1,6 +1,7 @@
 {
   "extends": "@vtrbo",
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "vue/prefer-import-from-vue": "off"
   }
 }

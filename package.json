@@ -19,16 +19,12 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "require": "./dist/main.cjs"
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/main.cjs",
   "bin": {
-    "vtr": "bin/index.mjs"
+    "vtr": "bin/vtr.mjs"
   },
   "files": [
     "dist",
@@ -45,20 +41,18 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@temir/cli": "^0.0.6",
-    "@temir/core": "^0.0.6",
-    "@types/node": "^18.7.1",
+    "@temir/cli": "^0.0.9",
+    "@temir/core": "^0.0.9",
+    "@temir/link": "^0.0.9",
+    "@temir/select-input": "^0.0.9",
+    "@temir/spinner": "^0.0.9",
+    "@temir/tab": "^0.0.9",
+    "@vitejs/plugin-vue": "^3.0.2",
     "@vtrbo/eslint-config": "^0.0.6",
-    "@vtrbo/ni": "^0.0.3",
-    "@vtrbo/utils": "0.0.13",
     "@vue/runtime-core": "^3.2.37",
-    "bumpp": "^8.2.1",
     "eslint": "^8.21.0",
-    "esno": "^0.16.3",
-    "load-repo": "^0.0.1",
-    "pnpm": "^7.9.0",
-    "typescript": "^4.7.4",
-    "vitest": "^0.21.1",
+    "vite": "^3.0.6",
+    "vite-node": "^0.21.1",
     "vue": "^3.2.37"
   }
 }

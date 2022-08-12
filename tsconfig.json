@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
+    "jsx": "preserve",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
