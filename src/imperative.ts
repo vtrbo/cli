@@ -1,8 +1,8 @@
 import ora from 'ora'
-import chalk from 'chalk'
-import { downloadRepository } from './utils'
+import { downloadRepository } from './download'
+import { clog } from './utils'
 
-export default async function command(args: string[]): Promise<void> {
+export default async function imperative(args: string[]): Promise<void> {
   let params:
   { [key: string]: string }
   = {
@@ -42,12 +42,12 @@ export default async function command(args: string[]): Promise<void> {
 
   const repoUrl = `${origin}:${owner}/${repo}${branch ? `#${branch}` : ''}`
 
-  const oraInstance = ora(chalk.blue('download repository ing...')).start()
+  const oraInstance = ora(clog('download repository ing...', 'blue')).start()
 
   let downloadResult = true
   downloadResult = await downloadRepository(repoUrl, dir)
 
   downloadResult
-    ? oraInstance.succeed(chalk.green('download repository success'))
-    : oraInstance.fail(chalk.red('download repository fail'))
+    ? oraInstance.succeed(clog('download repository success', 'green'))
+    : oraInstance.fail(clog('download repository fail', 'red'))
 }

@@ -2,7 +2,8 @@ import { Command } from 'commander'
 import { object } from '@vtrbo/utils'
 import { name, version } from '../package.json'
 import interaction from './interaction'
-import command from './command'
+import imperative from './imperative'
+import { clog } from './utils'
 
 const program = new Command()
 
@@ -13,7 +14,7 @@ program
 
 // version
 program
-  .version(version, '-v --version', '版本信息')
+  .version(`${clog(version, 'blue')}`, '-v --version', '版本信息')
 
 // help
 program
@@ -24,8 +25,8 @@ Commands Description:
   <指令> [下载] [指定来源] <拥有者>/<仓库> 至 [指定文件夹] [指定分支]
   <*> 必填
   [*] 可选
-  如: vtr vtrbo/cli
-  `)
+  如: vtr vtrbo/cli`,
+  )
 
 // custom options
 program
@@ -35,8 +36,6 @@ program
 // command parse
 program
   .action((options, { args }) => {
-    console.log('options', options)
-    console.log('args', args)
     if (
       // options keys && args length is 0
       !((object.keys(options) || []).length || args.length)
@@ -46,13 +45,11 @@ program
       || options.init
     ) {
       // 对话式命令
-      console.log('对话式命令')
       interaction()
     }
     else {
       // 指令式命令
-      console.log('指令式命令')
-      command(args)
+      imperative(args)
     }
   })
 

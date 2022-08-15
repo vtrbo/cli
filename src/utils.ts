@@ -1,19 +1,11 @@
-import path from 'path'
-import { loadRepo } from 'load-repo'
+import chalk from 'chalk'
 
-export function downloadRepository(repoUrl: string, fileName: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const cwd = process.cwd()
-    const dirPath = path.resolve(cwd, fileName)
-
-    loadRepo(
-      repoUrl,
-      dirPath,
-      { clone: false },
-      (error?: Error) => {
-        if (error)
-          resolve(false)
-        resolve(true)
-      })
-  })
+/**
+ * @description 日志输出样式
+ * @param { string } message 消息
+ * @param { string } color 颜色
+ * @returns { string }
+ */
+export function clog(message: string, color: string): string {
+  return `${chalk.green('[@vtrbo/cli]')} ${chalk.yellow('=>')} ${(chalk as any)[color](message)}`
 }

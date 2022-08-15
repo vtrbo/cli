@@ -1,7 +1,7 @@
 import ora from 'ora'
-import chalk from 'chalk'
 import inquirer from 'inquirer'
-import { downloadRepository } from './utils'
+import { downloadRepository } from './download'
+import { clog } from './utils'
 
 interface IAnswer {
   tRepo: string
@@ -113,32 +113,31 @@ const REMINDERS = [
 
 export default async function interaction(): Promise<void> {
   const answers = await inquirer.prompt(REMINDERS)
-  console.log('answers', answers)
 
   if (['custom'].includes(answers.tRepo)) {
     // 自定义下载
     const repoUrl = `${answers.cOrigin}:${answers.cOwner}/${answers.cRepo}${answers.cBranch ? `#${answers.cBranch}` : ''}`
 
-    const oraInstance = ora(chalk.blue('download repository ing...')).start()
+    const oraInstance = ora(clog('download repository ing...', 'blue')).start()
 
     let downloadResult = true
     downloadResult = await downloadRepository(repoUrl, answers.cFileName)
 
     downloadResult
-      ? oraInstance.succeed(chalk.green('download repository success'))
-      : oraInstance.fail(chalk.red('download repository fail'))
+      ? oraInstance.succeed(clog('download repository success', 'green'))
+      : oraInstance.fail(clog('download repository fail', 'red'))
   }
   else {
     // 模板下载
     const repoUrl = `github:vtrbo/${answers.tRepo}#${answers.tBranch}`
 
-    const oraInstance = ora(chalk.blue('download repository ing...')).start()
+    const oraInstance = ora(clog('download repository ing...', 'blue')).start()
 
     let downloadResult = true
     downloadResult = await downloadRepository(repoUrl, answers.tFileName)
 
     downloadResult
-      ? oraInstance.succeed(chalk.green('download repository success'))
-      : oraInstance.fail(chalk.red('download repository fail'))
+      ? oraInstance.succeed(clog('download repository success', 'green'))
+      : oraInstance.fail(clog('download repository fail', 'red'))
   }
 }
