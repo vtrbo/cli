@@ -52,6 +52,7 @@
     "inquirer": "^9.1.0",
     "load-repo": "^0.0.1",
     "ora": "^6.1.2",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
   }
 }

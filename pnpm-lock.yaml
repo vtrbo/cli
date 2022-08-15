@@ -16,6 +16,7 @@ importers:
       load-repo: ^0.0.1
       ora: ^6.1.2
       rimraf: ^3.0.2
+      typescript: ^4.7.4
     devDependencies:
       '@temir/cli': 0.0.9_j6bzmzd4ujpabbp5objtwxyjp4
       '@types/inquirer': 9.0.0
@@ -29,6 +30,7 @@ importers:
       load-repo: 0.0.1
       ora: 6.1.2
       rimraf: 3.0.2
+      typescript: 4.7.4
 
 packages:
 
