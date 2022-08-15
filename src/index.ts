@@ -2,6 +2,7 @@ import { Command } from 'commander'
 import { object } from '@vtrbo/utils'
 import { name, version } from '../package.json'
 import interaction from './interaction'
+import command from './command'
 
 const program = new Command()
 
@@ -51,6 +52,7 @@ program
     else {
       // 指令式命令
       console.log('指令式命令')
+      command(args)
     }
   })
 
