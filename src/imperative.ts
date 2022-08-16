@@ -1,6 +1,6 @@
 import ora from 'ora'
-import { downloadRepository } from './download'
 import { clog } from './utils'
+import { downloadRepository } from './download'
 
 export default async function imperative(args: string[]): Promise<void> {
   let params:
