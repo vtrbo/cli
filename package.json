@@ -43,7 +43,7 @@
   "devDependencies": {
     "@temir/cli": "^0.0.9",
     "@types/inquirer": "^9.0.1",
-    "@types/node": "^18.7.8",
+    "@types/node": "^18.7.9",
     "@vtrbo/eslint-config": "^0.0.7",
     "@vtrbo/utils": "^0.0.15",
     "bumpp": "^8.2.1",
