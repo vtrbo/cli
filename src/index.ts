@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { keys } from '@vtrbo/utils/object'
+import { objectKeys } from '@vtrbo/utils/object'
 import { name, version } from '../package.json'
 import interaction from './interaction'
 import imperative from './imperative'
@@ -38,7 +38,7 @@ program
   .action((options, { args }) => {
     if (
       // options keys && args length is 0
-      !((keys(options) || []).length || args.length)
+      !((objectKeys(options) || []).length || args.length)
       // options.download is true && args length is 0
       || (options.download && !args.length)
       // options.init is true
