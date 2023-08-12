@@ -1,7 +1,7 @@
 {
   "name": "@vtrbo/cli",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "packageManager": "pnpm@8.6.12",
   "description": "start project cli.",
   "author": {
