@@ -1,4 +1,5 @@
-import path from 'path'
+import path from 'node:path'
+import process from 'node:process'
 import { loadRepo } from 'load-repo'
 
 export function downloadRepository(repoUrl: string, fileName: string): Promise<boolean> {

@@ -15,10 +15,12 @@ interface IAnswer {
 }
 
 const TEMPLATES = [
-  { name: 'TSLibrary', value: 'starter-library' },
-  { name: 'VitePress', value: 'starter-vitepress' },
-  { name: 'VSCode', value: 'starter-vscode' },
+  { name: 'NpmLibrary', value: 'starter-library' },
+  { name: 'Vitepress', value: 'starter-vitepress' },
+  { name: 'SvelteKit', value: 'starter-svelte-kit' },
   { name: 'Unplugin', value: 'starter-unplugin' },
+  { name: 'VitePlugin', value: 'starter-vite-plugin' },
+  { name: 'VSCode', value: 'starter-vscode' },
   { name: 'Custom', value: 'custom' },
 ]
 
